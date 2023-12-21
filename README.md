@@ -9,9 +9,7 @@ and no need to write main function for google tests
 
 ```
 {
-    cout << "\n\n\n\n*****\n\nPopulating tests from gtest main" << endl;
-
-	testing::InitGoogleTest(&argc, argv);
+    	testing::InitGoogleTest(&argc, argv);
 	return RUN_ALL_TESTS();
 }
 ```
