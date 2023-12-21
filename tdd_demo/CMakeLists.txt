@@ -16,6 +16,9 @@ FetchContent_MakeAvailable(googletest)
 # Add the source files
 add_executable(${PROJECT_NAME} main.cpp)
 
+#link gtest lib
+target_link_libraries(${PROJECT_NAME} gtest_main gmock_main)
+
 # Link Google Test with the testsInit_done_in_CMake_main)
 
 #avoid main to init googletest and run all test
@@ -25,8 +28,12 @@ add_executable(${PROJECT_NAME} main.cpp)
     # 	return RUN_ALL_TESTS();
     # }
 
-#set(Init_done_in_CMake 1)
-# include(GoogleTest)
-# gtest_discover_tests(${PROJECT_NAME})
+
+# set preprocessor macro from CMakeLists.txt
+# target_compile_definitions(${PROJECT_NAME} PRIVATE GTEST_MAIN_INIT_IN_CMAKE)
+# or 
+add_definitions(-DGTEST_MAIN_INIT_IN_CMAKE)
+include(GoogleTest)
+gtest_discover_tests(${PROJECT_NAME})
 
 
